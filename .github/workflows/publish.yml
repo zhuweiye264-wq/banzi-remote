@@ -18,6 +18,10 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+      - name: Decode icons
+        run: |
+          base64 --decode icon-192.png.b64 > icon-192.png
+          base64 --decode icon-512.png.b64 > icon-512.png
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
